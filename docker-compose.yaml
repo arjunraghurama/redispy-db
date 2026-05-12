@@ -3,3 +3,9 @@ services:
     build: .
     ports:
       - "6379:6379"
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - "6378:6378"
+    command: redis-server --port 6378
