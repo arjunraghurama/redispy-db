@@ -3,7 +3,7 @@
 
 Start the Redis Server 
 ```bash
-python3 main.py
+docker compose up --build
 ```
 
 Connect using netcat and send a message
@@ -14,9 +14,11 @@ Hello
 
 Output
 ```
-Starting redispy-db...
-Client connected: ('127.0.0.1', 57842)
-Data sent from client is : Hello
+Attaching to db-1
+db-1  | Starting redispy-db...
+db-1  | Client connected: ('172.26.0.1', 57708)
+db-1  | Data sent from client is : Hello
+db-1  | 
 ```
 
 TCP server will echo back the data sent from the client
