@@ -13,9 +13,7 @@ def write(socket_connection: socket, message: str):
 
 def run_tcp_server():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-    server.bind(("127.0.0.1", 6379))
-
+    server.bind(("0.0.0.0", 6379))
     server.listen(5)
     connected_clients_count = 0
 
