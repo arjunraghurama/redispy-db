@@ -28,3 +28,11 @@ Access the redis-cli using following command
 ```bash
 docker compose exec redis redis-cli -h db -p 6379
 ```
+
+or 
+
+```
+docker compose exec -it redis sh
+/data # redis-cli -h db -p 6379 PING
+/data # redis-cli -h db -p 6379 SET K [1,2,3]
+```
