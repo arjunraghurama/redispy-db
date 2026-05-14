@@ -1,5 +1,5 @@
 import socket
-
+from decode import decode_resp
 def read(socket_connection: socket):
     data = socket_connection.recv(1024)
     if data == b"" :
@@ -29,8 +29,16 @@ def run_tcp_server():
                     connected_clients_count -= 1
                     print(f"Client {addr} got disconnected")
                     break
-                print(f"Data sent from client is : {data.decode("utf-8")}")
-                write(conn, data.decode("utf-8"))
+                print(f"Raw data: {data.decode('utf-8')}")
+                value, _ = decode_resp(data)
+                print(f"Data sent from client is : {value}, length: {len(value)}")
+                
+                # Respond to the client
+                if value and isinstance(value, list) and value[0].upper() == "PING":
+                    write(conn, "+PONG\r\n")
+                else:
+                    write(conn, "+OK\r\n")
+                # write(conn, data.decode("utf-8"))
         except Exception as e:
             print(f"Client {addr} got disconnected: {e}")
             conn.close()
