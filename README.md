@@ -43,6 +43,12 @@ docker compose exec -it redis sh
 /data # redis-cli -h localhost -p 6378 SET K [1,2,3]
 ```
 
+## What commands work?
+1. `ping`
+2. `ping <args>`
+
+As of now server only accepts one client as it is synchronous
+
 ## Benchmark
 we are using redis-benchmark tool
 
