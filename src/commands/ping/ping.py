@@ -13,6 +13,7 @@ class PingCommand:
         if len(self.args) == 0:
             return "+PONG\r\n"
         elif len(self.args) == 1:
-            return f"+{self.args[0]}\r\n"
+            arg = self.args[0]
+            return f"${len(arg)}\r\n{arg}\r\n"
         else:
             return "-ERR wrong number of arguments for 'ping' command\r\n"

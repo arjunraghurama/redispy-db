@@ -36,3 +36,17 @@ docker compose exec -it redis sh
 /data # redis-cli -h db -p 6379 PING
 /data # redis-cli -h db -p 6379 SET K [1,2,3]
 ```
+
+
+Benchmark using redis-benchmark
+Actual redis
+1. Single client, 10 requests
+```bash
+redis-benchmark -n 10 -q -t ping_mbulk -h localhost -p 6378
+```
+
+Our implementation
+Single client, 10 requests
+```bash
+redis-benchmark -n 10 -c 1 -t ping_mbulk -h db -p 6379
+```
