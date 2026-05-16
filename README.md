@@ -1,11 +1,22 @@
-# redispy-db
+# 
 
-This project is a re-mplementation of redis in python 
+<h1 align="center">
+   redispy-db
+   <br/>
+   <h4 align="center">
+    A re-mplementation of redis in python 
+   </h4>
+</h1>
+
+
+
 
 <br/>
 
+## Tests
 [![Unit Test](https://github.com/arjunraghurama/redispy-db/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/arjunraghurama/redispy-db/actions/workflows/ci.yaml)
 
+## Getting started
 Start the Redis Server 
 ```bash
 docker compose up --build
@@ -32,8 +43,8 @@ docker compose exec -it redis sh
 /data # redis-cli -h localhost -p 6378 SET K [1,2,3]
 ```
 
-
-Benchmark using redis-benchmark
+## Benchmark
+we are using redis-benchmark tool
 
 Actual redis, single client, 10 requests
 ```bash
