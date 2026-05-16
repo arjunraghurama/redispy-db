@@ -1,6 +1,6 @@
 import socket
 from src.decode.decode import decode_resp
-
+from src.commands.ping.ping import PingCommand
 
 def read(socket_connection: socket):
     data = socket_connection.recv(1024)
@@ -34,12 +34,13 @@ def run_tcp_server():
                 value, _ = decode_resp(data)
                 print(f"Data sent from client is : {value}, length: {len(value)}")
 
-                # Respond to the client
-                if value and isinstance(value, list) and value[0].upper() == "PING":
-                    write(conn, "+PONG\r\n")
+                if value[0].upper() == PingCommand.command:
+                    ping_command = PingCommand(value[1:])
+                    response = ping_command.execute()
+                    print(f"Response: {response}")
+                    write(conn, response)
                 else:
                     write(conn, "+OK\r\n")
-                # write(conn, data.decode("utf-8"))
         except Exception as e:
             print(f"Client {addr} got disconnected: {e}")
             conn.close()
