@@ -45,3 +45,7 @@ Here is the benchmark after the initial implementation of `PING` command
 ![](/assets/1.benchmark_synchronus_server.png)
 
 We were able to achieve a decent speed of `3333.3` rps where as Redis achieved `10000` rps
+
+## Credits
+This implementation is based on the `Redis Internals` series by [`Arpit Bhayani`](https://github.com/arpitbbhayani).<br/> Original implementation is in golang and can be found [here](https://github.com/dicedb/dicedb)
+YouTube playlist where he explains the concepts can be found [here](https://www.youtube.com/watch?v=h30k7YixrMo&list=PLsdq-3Z1EPT0eElcdOON9fdaeaQjlyXDt)
