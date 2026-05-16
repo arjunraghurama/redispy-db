@@ -6,47 +6,42 @@ Start the Redis Server
 docker compose up --build
 ```
 
-Connect using netcat and send a message
-```bash
-nc localhost 6379
-Hello
-```
+There are two docker containers running.
+1. redispy-db : Our implementation of redis at port `6379`
+2. redis : Actual redis for comparison at port `6378`
 
-Output
-```
-Attaching to db-1
-db-1  | Starting redispy-db...
-db-1  | Client connected: ('172.26.0.1', 57708)
-db-1  | Data sent from client is : Hello
-db-1  | 
-```
+<br/>
 
-TCP server will echo back the data sent from the client
-
-Added the redis container also for testing.
+To test our server we use the redis-cli and redis-benchmark tools.<br>
 Access the redis-cli using following command
 ```bash
-docker compose exec redis redis-cli -h db -p 6379
+docker compose exec redis redis-cli -h redispy-db -p 6379
 ```
 
 or 
 
 ```
 docker compose exec -it redis sh
-/data # redis-cli -h db -p 6379 PING
-/data # redis-cli -h db -p 6379 SET K [1,2,3]
+/data # redis-cli -h redispy-db -p 6379 PING
+/data # redis-cli -h localhost -p 6378 PING
+/data # redis-cli -h localhost -p 6378 SET K [1,2,3]
 ```
 
 
 Benchmark using redis-benchmark
-Actual redis
-1. Single client, 10 requests
+
+Actual redis, single client, 10 requests
 ```bash
-redis-benchmark -n 10 -q -t ping_mbulk -h localhost -p 6378
+redis-benchmark -n 10 -q -c 1 -t ping_mbulk -h localhost -p 6378
 ```
 
-Our implementation
-Single client, 10 requests
+Our implementation, single client, 10 requests
 ```bash
-redis-benchmark -n 10 -c 1 -t ping_mbulk -h db -p 6379
+redis-benchmark -n 10 -q -c 1 -t ping_mbulk -h redispy-db -p 6379
 ```
+
+Here is the benchmark after the initial implementation of `PING` command
+
+![](/assets/1.benchmark_synchronus_server.png)
+
+We were able to achieve a decent speed of `3333.3` rps where as Redis achieved `10000` rps

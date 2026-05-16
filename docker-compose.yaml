@@ -1,5 +1,5 @@
 services:
-  db:
+  redispy-db:
     build: .
     ports:
       - "6379:6379"
