@@ -1,6 +1,10 @@
 # redispy-db
 
-This project is a re-mplementation of redis in python
+This project is a re-mplementation of redis in python 
+
+<br/>
+
+[![Unit Test](https://github.com/arjunraghurama/redispy-db/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/arjunraghurama/redispy-db/actions/workflows/ci.yaml)
 
 Start the Redis Server 
 ```bash
