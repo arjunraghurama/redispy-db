@@ -1,5 +1,6 @@
 # redispy-db
 
+This project is a re-mplementation of redis in python
 
 Start the Redis Server 
 ```bash
