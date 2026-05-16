@@ -1,5 +1,5 @@
 import socket
-from decode import decode_resp
+from src.decode.decode import decode_resp
 def read(socket_connection: socket):
     data = socket_connection.recv(1024)
     if data == b"" :
