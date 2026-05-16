@@ -1,20 +1,13 @@
-# 
+
 
 <h1 align="center">
-   redispy-db
+   <img src="./assets/logo_redispy.png" width="200"/>
    <br/>
    <h4 align="center">
     A re-mplementation of redis in python 
    </h4>
 </h1>
-
-
-
-
 <br/>
-
-## Tests
-[![Unit Test](https://github.com/arjunraghurama/redispy-db/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/arjunraghurama/redispy-db/actions/workflows/ci.yaml)
 
 ## Getting started
 Start the Redis Server 
@@ -42,6 +35,8 @@ docker compose exec -it redis sh
 /data # redis-cli -h localhost -p 6378 PING
 /data # redis-cli -h localhost -p 6378 SET K [1,2,3]
 ```
+## Tests
+[![Unit Test](https://github.com/arjunraghurama/redispy-db/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/arjunraghurama/redispy-db/actions/workflows/ci.yaml)
 
 ## What commands work?
 1. `ping`
