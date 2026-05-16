@@ -4,4 +4,10 @@ version = "0.1.0"
 description = "Implementation of redis in Python"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pytest>=9.0.3",
+    "ruff>=0.15.13",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
